@@ -14,7 +14,7 @@ class Client(commands.Bot):
     async def on_ready(self):
         print(f'logged on as {self.user}')
         try:
-            guild=discord.Object(id=1352465060643078255)
+            guild=discord.Object(id=GuildID) #Change to fit whatever your server id is for faster connections
             synced= await self.tree.sync(guild=guild)
             print(f'Synced {len(synced)} commands to guild {guild.id}')
         except Exception as e:
@@ -31,9 +31,9 @@ fmt = '%d-%m-%Y %H:%M %Z%z'
 FILE_PATH = 'Race schedule.xlsx'  # Replace with the actual path to your file
 USER_TIMEZONE_FILE = 'user_timezones.json'  # File to store user timezones
 # Channel ID of the target Discord channel
-CHANNEL_ID_ANNOUNCEMENTS = 1352465060643078258  # Replace with your actual Discord channel ID
+CHANNEL_ID_ANNOUNCEMENTS = 123456789012345678  # Replace with your actual Discord channel ID
 CHANNEL_ID_SPAM=1
-GUILD_ID=discord.Object(id=1352465060643078255)
+GUILD_ID=discord.Object(id=GuildID) #replace with server id 
 def load_user_timezones():
     try:
         with open(USER_TIMEZONE_FILE, 'r') as f:
@@ -181,7 +181,7 @@ async def next_race(interaction: discord.Interaction):
 async def on_ready():
     print(f'Logged in as {client.user}')
     try:    
-        guild=discord.Object(id=1352465060643078255)
+        guild=discord.Object(id=GuildID)
         synced= await client.tree.sync(guild=guild)
         print(f'Synced {len(synced)} commands to guild {guild.id}')
     except Exception as e:
@@ -190,5 +190,5 @@ async def on_ready():
     client.loop.create_task(scheduled_event_loop())
 
 
-TOKEN = 'MTM1MjQ2NDk1MjYzOTYxOTEzNA.GtbJmz.amg668zh-jmKK0ONPu9oWJA_JTv49D6VvfBUFc'  # Replace with your bot's token
+TOKEN = 'your_token_here'  # Replace with your bot's token
 client.run(TOKEN)
